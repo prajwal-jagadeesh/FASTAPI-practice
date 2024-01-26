@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fastapi-deploy
+  labels:
+    app: fastapi
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: fastapi
+  template:
+    metadata:
+      labels:
+        app: fastapi
+    spec:
+      containers:
+      - name: fastapi
+        image: prajwaldevops01/k8s-fastapi:v0.0.5
+        ports:
+        - containerPort: 80
+        env:
+          - name: ENV
+            value: "PRAJWAL"
+
+        
+
+
